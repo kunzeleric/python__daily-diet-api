@@ -63,7 +63,16 @@ def update_meal(id):
         meal.description = description
         meal.is_on_diet = is_on_diet
         meal.date_time = datetime.now()
-        
         db.session.commit()
         return jsonify({"message": "Meal updated successfully!"}), 200
     return jsonify({"message": "Meal not found."}), 404
+
+@meal_routes.route("/meal/<int:id>", methods=["DELETE"])
+@login_required
+def delete_meal(id):
+    meal = Meal.query.filter_by(id=id, user_id=current_user.id).first()
+    if meal:
+        db.session.delete(meal)
+        db.session.commit()
+        return jsonify({"message": "Meal deleted successfully!"}), 200
+    return jsonify({"message": "Meal not found for this user."}), 404
