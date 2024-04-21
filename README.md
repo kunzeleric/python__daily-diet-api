@@ -106,3 +106,31 @@ docker compose up -d
 | Param Data   | Type       | Description                           |
 | :---------- | :--------- | :---------------------------------- |
 | `id` | `integer` | **Mandatory**. Meal's ID. |
+
+#### Edit Meal
+
+```http
+  PUT /meal/:id
+```
+
+| Param Data   | Type       | Description                           |
+| :---------- | :--------- | :---------------------------------- |
+| `id` | `integer` | **Mandatory**. Meal's ID. |
+
+
+| Body Data   | Type       | Description                           |
+| :---------- | :--------- | :---------------------------------- |
+| `meal_name` | `string` | **Optional**. Meal's name. |
+| `description` | `string` | **Optional**. Meal's description. |
+| `is_on_diet` | `boolean` | **Optional**. Tells wether the meal is on the diet track or not. |
+
+
+#### Delete a Meal
+
+```http
+  DELETE /meal/:id
+```
+
+| Param Data   | Type       | Description                           |
+| :---------- | :--------- | :---------------------------------- |
+| `id` | `integer` | **Mandatory**. Meal's ID. |
