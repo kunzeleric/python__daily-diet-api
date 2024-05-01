@@ -15,12 +15,14 @@ def create_meal():
     data = request.json
     meal_name = data.get("meal_name")
     description = data.get("description")
+    calories=data.get("calories", 0),
     is_on_diet = data.get("is_on_diet", False)
     user_id = current_user.id
     if meal_name and description:
         diet = Meal(
             meal_name=meal_name,
             description=description,
+            calories=calories,
             user_id=user_id,
             is_on_diet=is_on_diet,
         )
@@ -58,9 +60,11 @@ def update_meal(id):
         data = request.json
         meal_name = data.get("meal_name", meal.meal_name)
         description = data.get("description", meal.description)
+        calories = data.get('calories', meal.calories)
         is_on_diet = data.get("is_on_diet", meal.is_on_diet)
         meal.meal_name = meal_name
         meal.description = description
+        meal.calories = calories
         meal.is_on_diet = is_on_diet
         meal.date_time = datetime.now()
         db.session.commit()
