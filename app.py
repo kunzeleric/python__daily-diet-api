@@ -4,6 +4,7 @@ from database import db
 from models.user import User
 from routes.user.routes import user_routes
 from routes.meal.routes import meal_routes
+from routes.kpis.routes import metrics_routes
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "S2@#!4S1WSA1SS#@#$12311#@!#!@"
@@ -22,6 +23,7 @@ login_manager.login_view = "login"
 # Register user route blueprint
 app.register_blueprint(user_routes)
 app.register_blueprint(meal_routes)
+app.register_blueprint(metrics_routes)
 
 # Callback function to reload user object from user ID stored in session
 @login_manager.user_loader

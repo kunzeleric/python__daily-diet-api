@@ -6,7 +6,7 @@ metrics_routes = Blueprint(
 )
 
 
-@metrics_routes.routes("/metrics/calories", methods=["GET"])
+@metrics_routes.route("/metrics/calories", methods=["GET"])
 def get_total_calories():
     meals = Meal.query.all()
     if meals:
@@ -19,7 +19,7 @@ def get_total_calories():
     )
 
 
-@metrics_routes.routes("/metrics/best-sequence", methods=["GET"])
+@metrics_routes.route("/metrics/best-sequence", methods=["GET"])
 def get_best_sequence():
     meals = Meal.query.all()
     if meals:
