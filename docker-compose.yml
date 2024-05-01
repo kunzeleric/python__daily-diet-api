@@ -12,4 +12,4 @@ services:
     expose:
       - '3306'
     volumes:
-      - /mysql/mysql:/var/lib/mysql
+      - E:\programming_folders\ROCKETSEAT\PYTHON/mysql/mysql:/var/lib/mysql
